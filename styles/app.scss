@@ -1,8 +1,10 @@
+$bg-color: #c6d1dc;
+
 body,
 html {
-  padding: 0;
-  margin: 0;
   height: 100%;
+  margin: 0;
+  padding: 0;
 }
 
 @keyframes spingleft {
@@ -25,59 +27,44 @@ html {
 }
 
 img {
-  transition: 1s all;
+  transition-duration: 1s;
+  transition-property: width, height;
 
   &.spin {
     &-left {
-      animation-duration: 0.3s;
+      animation-duration: .3s;
       animation-name: spingleft;
     }
+
     &-right {
-      animation-duration: 0.3s;
+      animation-duration: .3s;
       animation-name: spingright;
     }
   }
 
   &.zoom {
-    &-0 {
-      width: 100px;
-      height: 100px;
-    }
-    &-1 {
-      width: 200px;
-      height: 200px;
-    }
-    &-2 {
-      width: 300px;
-      height: 300px;
-    }
-    &-3 {
-      width: 400px;
-      height: 400px;
-    }
-    &-4 {
-      width: 500px;
-      height: 500px;
-    }
-    &-5 {
-      width: 600px;
-      height: 600px;
+    @for $i from 0 through 5 {
+      &-#{$i} {
+        height: 100px + 100 * $i;
+        width: 100px + 100 * $i;
+      }
     }
   }
 }
 
 .app {
-  padding: 2em;
-  text-align: center;
-  background-color: #c6d1dc;
+  background-color: $bg-color;
   height: calc(100% - 4em);
+  padding: 2em 0;
+  text-align: center;
 
   button {
+    height: 37px;
     margin: 1em;
     width: 37px;
-    height: 37px;
   }
 }
+
 .nabuls {
   margin-bottom: 2em;
 }
@@ -85,4 +72,5 @@ img {
 .doggelis {
   display: flex;
   justify-content: center;
+  overflow: hidden;
 }
