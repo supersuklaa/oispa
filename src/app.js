@@ -31,11 +31,11 @@ app({
     main({ class: 'app' }, [
       div({ class: 'nabuls' }, [
         button(
-          { onclick: Subtract, disabled: zoom === minZoom ? 'disabled' : undefined },
+          { onclick: Subtract, disabled: zoom === minZoom },
           text('-'),
         ),
         button(
-          { onclick: Add, disabled: zoom === maxZoom ? 'disabled' : undefined },
+          { onclick: Add, disabled: zoom === maxZoom },
           text('+'),
         ),
       ]),
