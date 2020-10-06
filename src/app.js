@@ -3,24 +3,43 @@ import { main, div, button, img } from '@hyperapp/html';
 
 import doge from '../static/kaljadoge.jpg';
 
-const Subtract = state => ({ ...state, zoom: Math.max(state.zoom - 1, 0) });
-const Add = state => ({ ...state, zoom: Math.min(state.zoom + 1, 5) });
+const minZoom = 0;
+const maxZoom = 5;
+
+const Spin = (dispatch, stop) => {
+  setTimeout(() => {
+    dispatch(stop);
+  }, 300);
+};
+
+const Stop = state => ({ ...state, spin: '' });
+
+const Subtract = state => [{ spin: 'left', zoom: Math.max(state.zoom - 1, minZoom) },
+  [
+    Spin, Stop,
+  ],
+];
+const Add = state => [{ spin: 'right', zoom: Math.min(state.zoom + 1, maxZoom) },
+  [
+    Spin, Stop,
+  ],
+];
 
 app({
-  init: (zoom = 0) => ({ zoom }),
-  view: ({ zoom }) =>
+  init: (zoom = 0, spin = '') => ({ zoom, spin }),
+  view: ({ zoom, spin }) =>
     main({ class: 'app' }, [
       div({ class: 'nabuls' }, [
         button(
-          { onclick: Subtract, disabled: zoom === 0 ? 'disabled' : undefined },
+          { onclick: Subtract, disabled: zoom === minZoom ? 'disabled' : undefined },
           text('-'),
         ),
         button(
-          { onclick: Add, disabled: zoom === 5 ? 'disabled' : undefined },
+          { onclick: Add, disabled: zoom === maxZoom ? 'disabled' : undefined },
           text('+'),
         ),
       ]),
-      div({}, [img({ src: doge, class: `zoom-${zoom}` })]),
+      div({}, [img({ src: doge, class: `zoom-${zoom} spin-${spin}` })]),
     ]),
   node: document.getElementById('app'),
 });

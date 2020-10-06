@@ -1,5 +1,42 @@
+body,
+html {
+  padding: 0;
+  margin: 0;
+  height: 100%;
+}
+
+@keyframes spingleft {
+  from {
+    transform: rotate(0deg);
+  }
+
+  to {
+    transform: rotate(360deg);
+  }
+}
+@keyframes spingright {
+  from {
+    transform: rotate(0deg);
+  }
+
+  to {
+    transform: rotate(-360deg);
+  }
+}
+
 img {
   transition: 1s all;
+
+  &.spin {
+    &-left {
+      animation-duration: 0.3s;
+      animation-name: spingleft;
+    }
+    &-right {
+      animation-duration: 0.3s;
+      animation-name: spingright;
+    }
+  }
 
   &.zoom {
     &-0 {
@@ -24,15 +61,17 @@ img {
 }
 
 .app {
-    margin: 2em;
-    text-align: center;
+  padding: 2em;
+  text-align: center;
+  background-color: #c6d1dc;
+  height: 100%;
 
-    button {
-        margin: 1em;
-        width: 37px;
-        height: 37px;
-    }
+  button {
+    margin: 1em;
+    width: 37px;
+    height: 37px;
+  }
 }
 .nabuls {
-    margin-bottom: 2em;
+  margin-bottom: 2em;
 }
