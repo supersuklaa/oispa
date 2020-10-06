@@ -64,7 +64,7 @@ img {
   padding: 2em;
   text-align: center;
   background-color: #c6d1dc;
-  height: 100%;
+  height: calc(100% - 4em);
 
   button {
     margin: 1em;
@@ -74,4 +74,9 @@ img {
 }
 .nabuls {
   margin-bottom: 2em;
+}
+
+.doggelis {
+  display: flex;
+  justify-content: center;
 }

@@ -39,7 +39,7 @@ app({
           text('+'),
         ),
       ]),
-      div({}, [img({ src: doge, class: `zoom-${zoom} spin-${spin}` })]),
+      div({ class: 'doggelis' }, [img({ src: doge, class: `zoom-${zoom} spin-${spin}` })]),
     ]),
   node: document.getElementById('app'),
 });
