@@ -7,7 +7,7 @@ const Subtract = state => ({ ...state, zoom: Math.max(state.zoom - 1, 0) });
 const Add = state => ({ ...state, zoom: Math.min(state.zoom + 1, 5) });
 
 app({
-  init: (zoom = 3) => ({ zoom }),
+  init: (zoom = 0) => ({ zoom }),
   view: ({ zoom }) =>
     main({ class: 'app' }, [
       div({ class: 'nabuls' }, [
